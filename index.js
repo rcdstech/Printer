@@ -7,6 +7,8 @@ const api = require('./server/routes/');
 const monogo = require('./server/MongoConfig');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -16,34 +18,34 @@ app.use(bodyParser.json())
 monogo.connect();
 
 // TODO:Implementing Swagger for Rest APi Test
-const swaggerDefinition = {
-    info: {
-        title: 'Brother Printer Swagger API',
-        version: '1.0.0',
-        description: 'Endpoints to test the user registration routes',
-    },
-    host: 'localhost:' + port,
-    basePath: '/',
-    securityDefinitions: {
-        bearerAuth: {
-            type: 'apiKey',
-            name: 'Authorization',
-            scheme: 'bearer',
-            in: 'header',
-        },
-    },
-};
-const options = {
-    swaggerDefinition,
-    apis: ['./server/routes/*.js'],
-};
-const swaggerSpec = swaggerJSDoc(options);
-app.get('/swagger.json', function(req, res) {
-    res.setHeader('Content-Type', 'application/json');
-    res.send(swaggerSpec);
-});
+// const swaggerDefinition = {
+//     info: {
+//         title: 'Brother Printer Swagger API',
+//         version: '1.0.0',
+//         description: 'Endpoints to test the user registration routes',
+//     },
+//     host: 'localhost:' + port,
+//     basePath: '/',
+//     securityDefinitions: {
+//         bearerAuth: {
+//             type: 'apiKey',
+//             name: 'Authorization',
+//             scheme: 'bearer',
+//             in: 'header',
+//         },
+//     },
+// };
+// const options = {
+//     swaggerDefinition,
+//     apis: ['./server/routes/*.js'],
+// };
+// const swaggerSpec = swaggerJSDoc(options);
+// app.get('/swagger.json', function(req, res) {
+//     res.setHeader('Content-Type', 'application/json');
+//     res.send(swaggerSpec);
+// });
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // All routes for /api are send to API Router
 app.use('/api',  api);

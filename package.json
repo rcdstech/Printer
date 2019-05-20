@@ -1,7 +1,7 @@
 {
   "name": "printer",
   "version": "1.0.0",
-  "description": "",
+  "description": "BSI Printer",
   "main": "index.js",
   "scripts": {
     "start": "node index",
@@ -34,7 +34,8 @@
     "winston-color": "^1.0.0",
     "xml-js": "^1.6.11",
     "xml2js": "^0.4.19",
-    "xml2js-xpath": "^0.9.0"
+    "xml2js-xpath": "^0.9.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
