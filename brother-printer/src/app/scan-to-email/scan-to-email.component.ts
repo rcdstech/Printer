@@ -8,11 +8,11 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ScanToEmailComponent {
 public scanToEmailData = {
-  destination: "",
-  scanTray: "ADF",
-  colorMode: "Color",
-  resolution: "Normal",
-  fileType: "PDF"
+  Destination: "",
+  ScanTray: "ADF",
+  ColorMode: "Color",
+  Resolution: "Normal",
+  FileType: "PDF"
 }
 public scanTrayList = ['ADF'];
 public colorModeList = ['Color', 'Gray', 'Mono'];
@@ -23,11 +23,11 @@ public fileTypeList = ['PDF', 'JPEG'];
   send() {
     this.http.post('/api/ScanToEmail/add', {"ScanToEmail": this.scanToEmailData}).subscribe(() => {
       this.scanToEmailData = {
-        destination: "",
-        scanTray: "",
-        colorMode: "",
-        resolution: "",
-        fileType: ""
+        Destination: "",
+        ScanTray: "ADF",
+        ColorMode: "Color",
+        Resolution: "Normal",
+        FileType: "PDF"
       }
     });
   }
