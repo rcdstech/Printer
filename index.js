@@ -49,6 +49,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // All routes for /api are send to API Router
 app.use('/api',  api);
+app.use('/', express.static(__dirname + '/view'));
 app.listen(port, (err) => {
     if(err) {
         console.log(err)

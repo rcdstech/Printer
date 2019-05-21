@@ -9,7 +9,7 @@ exports.create = function (req, res) {
         if(err) {
             res.send(err);
         }
-        res.send('Added')
+        res.send({message:'Added'})
     })
 };
 

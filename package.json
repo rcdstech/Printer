@@ -4,7 +4,8 @@
   "description": "BSI Printer",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
+    "start": "cd brother-printer && ng build && cd .. && node index",
+    "install": "cd brother-printer && npm i && cd .. && npm i",
     "test": "mocha"
   },
   "repository": {

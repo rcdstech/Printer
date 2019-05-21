@@ -8,7 +8,7 @@
           {
             "_attributes": {
               "type": "Submit",
-              "action": "./api/scanToEmail/sendToMail"
+              "action": "./scanToEmail/sendToMail"
             },
             "Label": {
               "_attributes": {
@@ -20,7 +20,7 @@
           {
             "_attributes": {
               "type": "Back",
-              "action": "./api/scanToEmail"
+              "action": "./scanToEmail"
             },
             "Label": {
               "_attributes": {
