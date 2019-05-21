@@ -17,10 +17,14 @@
           }
         }
       },
-      "ScanTray": "ADF",
-      "ColorMode": "Color",
-      "Resolution": "Normal",
-      "FileType": "PDF",
+      "ScanTray": {
+        "_text":"ADF"},
+      "ColorMode": {
+        "_text":"Color"},
+      "Resolution": {
+        "_text":"Normal"},
+      "FileType": {
+        "_text":"PDF"},
       "FileNameFixed": "true",
       "JobFinAckUrl": "http://example.bsi.com/jobfin"
     },
