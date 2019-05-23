@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const port = 8101;
 const parser = require('./server/util/parser');
 const api = require('./server/routes/');
+const api_files = require('./server/routes-files/');
 const monogo = require('./server/MongoConfig');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
@@ -49,6 +50,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // All routes for /api are send to API Router
 app.use('/api',  api);
+app.use('/file',  api_files);
 app.use('/', express.static(__dirname + '/view'));
 app.listen(port, (err) => {
     if(err) {

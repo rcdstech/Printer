@@ -7,7 +7,7 @@ basePath: "/api"
 schemes:
   - "http"
 paths:
-  /ScanToEmail/add:
+  /commandxml/add:
     post:
       tags:
         - "ScanToEmail"
@@ -33,7 +33,7 @@ paths:
         - petstore_auth:
             - "write:pets"
             - "read:pets"
-  /ScanToEmail:
+  /commandxml:
     post:
       tags:
         - "ScanToEmail"
@@ -51,7 +51,7 @@ paths:
         - petstore_auth:
             - "write:pets"
             - "read:pets"
-  /ScanToEmail/sendToMail:
+  /commandxml/sendToMail:
     post:
       tags:
         - "ScanToEmail"

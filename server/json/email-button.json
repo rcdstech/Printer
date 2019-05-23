@@ -18,7 +18,7 @@
     "Operations": {
       "Op": {
         "_attributes": {
-          "action": "./scanToEmail/email",
+          "action": "./commandxml/email",
           "type": "Submit"
         }
       }

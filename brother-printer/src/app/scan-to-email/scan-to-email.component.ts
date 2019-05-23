@@ -21,7 +21,7 @@ public fileTypeList = ['PDF', 'JPEG'];
   constructor(private http: HttpClient) { }
 
   send() {
-    this.http.post('/api/ScanToEmail/add', {"ScanToEmail": this.scanToEmailData}).subscribe(() => {
+    this.http.post('/file/commandxml/add', {"ScanToEmail": this.scanToEmailData}).subscribe(() => {
       this.scanToEmailData = {
         Destination: "",
         ScanTray: "ADF",

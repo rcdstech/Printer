@@ -174,7 +174,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div class=\"row\">\n      <div class=\"col-lg-6\">\n        <div class=\"form-group\">\n          <label>Email</label>\n          <input class=\"form-control\" id=\"Destination\" name=\"Destination\" [(ngModel)]=\"scanToEmailData.destination\" type=\"email\"/>\n        </div>\n        <div class=\"form-group\">\n          <label>ScanTray</label>\n          <select [(ngModel)]=\"scanToEmailData.scanTray\" class=\"form-control\" >\n            <option *ngFor=\"let option of scanTrayList; index as i\">{{option}}</option>\n          </select>\n        </div>\n        <div class=\"form-group\">\n          <label>ColorMode</label>\n          <select [(ngModel)]=\"scanToEmailData.colorMode\" class=\"form-control\" >\n            <option *ngFor=\"let option of colorModeList; index as i\">{{option}}</option>\n          </select>\n         </div>\n      </div>\n      <div class=\"col-lg-6\">\n        <div class=\"form-group\">\n          <label>Resolution</label>\n          <select [(ngModel)]=\"scanToEmailData.resolution\" class=\"form-control\" >\n            <option *ngFor=\"let option of resolutionList; index as i\">{{option}}</option>\n          </select>\n         </div>\n        <div class=\"form-group\">\n          <label>FileType</label>\n          <select [(ngModel)]=\"scanToEmailData.fileType\" class=\"form-control\" >\n            <option *ngFor=\"let option of fileTypeList; index as i\">{{option}}</option>\n          </select>\n         </div>\n        <div class=\"form-group\">\n          <button class=\"btn btn-outline-primary float-right\" (click)=\"send()\">{{scanToEmailData.destination === '' ?  'Scan' : 'Scan To Email'}}</button>\n        </div>\n      </div>\n  </div>\n"
+module.exports = "\n  <div class=\"row\">\n      <div class=\"col-lg-6\">\n        <div class=\"form-group\">\n          <label>Email</label>\n          <input class=\"form-control\" id=\"Destination\" name=\"Destination\" [(ngModel)]=\"scanToEmailData.Destination\" type=\"email\"/>\n        </div>\n        <div class=\"form-group\">\n          <label>ScanTray</label>\n          <select [(ngModel)]=\"scanToEmailData.ScanTray\" class=\"form-control\" >\n            <option *ngFor=\"let option of scanTrayList; index as i\">{{option}}</option>\n          </select>\n        </div>\n        <div class=\"form-group\">\n          <label>ColorMode</label>\n          <select [(ngModel)]=\"scanToEmailData.ColorMode\" class=\"form-control\" >\n            <option *ngFor=\"let option of colorModeList; index as i\">{{option}}</option>\n          </select>\n         </div>\n      </div>\n      <div class=\"col-lg-6\">\n        <div class=\"form-group\">\n          <label>Resolution</label>\n          <select [(ngModel)]=\"scanToEmailData.Resolution\" class=\"form-control\" >\n            <option *ngFor=\"let option of resolutionList; index as i\">{{option}}</option>\n          </select>\n         </div>\n        <div class=\"form-group\">\n          <label>FileType</label>\n          <select [(ngModel)]=\"scanToEmailData.FileType\" class=\"form-control\" >\n            <option *ngFor=\"let option of fileTypeList; index as i\">{{option}}</option>\n          </select>\n         </div>\n        <div class=\"form-group\">\n          <button class=\"btn btn-outline-primary float-right\" (click)=\"send()\">{{scanToEmailData.Destination === '' ?  'Scan' : 'Scan To Email'}}</button>\n        </div>\n      </div>\n  </div>\n"
 
 /***/ }),
 
@@ -209,11 +209,11 @@ var ScanToEmailComponent = /** @class */ (function () {
     function ScanToEmailComponent(http) {
         this.http = http;
         this.scanToEmailData = {
-            destination: "",
-            scanTray: "ADF",
-            colorMode: "Color",
-            resolution: "Normal",
-            fileType: "PDF"
+            Destination: "",
+            ScanTray: "ADF",
+            ColorMode: "Color",
+            Resolution: "Normal",
+            FileType: "PDF"
         };
         this.scanTrayList = ['ADF'];
         this.colorModeList = ['Color', 'Gray', 'Mono'];
@@ -222,13 +222,13 @@ var ScanToEmailComponent = /** @class */ (function () {
     }
     ScanToEmailComponent.prototype.send = function () {
         var _this = this;
-        this.http.post('/api/ScanToEmail/add', { "ScanToEmail": this.scanToEmailData }).subscribe(function () {
+        this.http.post('/api/commandxml/add', { "ScanToEmail": this.scanToEmailData }).subscribe(function () {
             _this.scanToEmailData = {
-                destination: "",
-                scanTray: "",
-                colorMode: "",
-                resolution: "",
-                fileType: ""
+                Destination: "",
+                ScanTray: "ADF",
+                ColorMode: "Color",
+                Resolution: "Normal",
+                FileType: "PDF"
             };
         });
     };
