@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const port = 8101;
 const parser = require('./server/util/parser');
 const api = require('./server/routes/');
@@ -10,11 +11,16 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./swagger.yaml');
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
+global.io = require('socket.io')(server);
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+app.use(cors())
 
 monogo.connect();
 
@@ -47,12 +53,13 @@ monogo.connect();
 // });
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
+app.get('/check/available', (req,res) => res.send({done:'active'}));
 // All routes for /api are send to API Router
 app.use('/api',  api);
 app.use('/file',  api_files);
 app.use('/', express.static(__dirname + '/view'));
-app.listen(port, (err) => {
+app.use('**', express.static(__dirname + '/view'));
+server.listen(port, (err) => {
     if(err) {
         console.log(err)
     }

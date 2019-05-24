@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { ScanToEmailComponent } from './scan-to-email/scan-to-email.component';
+import {HttpService} from "./service/http.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { ScanToEmailComponent } from './scan-to-email/scan-to-email.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

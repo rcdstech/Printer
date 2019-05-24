@@ -10,6 +10,7 @@ let parse = (req, res, next) => {
     req.on('data', function(chunk) {
         data += chunk;
     });
+    io.emit('by-printer', { 'xml': data });
     req.on('end', function() {
         req.xml = pd.xml(data.slice(data.search('<SerioEvent version'), data.search('</SerioEvent>')+13));
         parser.parseString(req.xml, function (err, result) {

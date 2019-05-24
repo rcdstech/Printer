@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {HttpService} from "../service/http.service";
 
 @Component({
   selector: 'app-scan-to-email',
@@ -18,10 +19,10 @@ public scanTrayList = ['ADF'];
 public colorModeList = ['Color', 'Gray', 'Mono'];
 public resolutionList = ['Normal', 'Low', 'High'];
 public fileTypeList = ['PDF', 'JPEG'];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   send() {
-    this.http.post('/file/commandxml/add', {"ScanToEmail": this.scanToEmailData}).subscribe(() => {
+    this.http.post( '/file/commandxml/add', {"ScanToEmail": this.scanToEmailData}).subscribe(() => {
       this.scanToEmailData = {
         Destination: "",
         ScanTray: "ADF",
@@ -30,6 +31,10 @@ public fileTypeList = ['PDF', 'JPEG'];
         FileType: "PDF"
       }
     });
+  }
+
+  checkHost() {
+
   }
 
 }

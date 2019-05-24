@@ -3,7 +3,7 @@ info:
   description: "This is a API Doc for Brother Printer."
   version: "1.0.0"
   title: "Brother Printer"
-basePath: "/api"
+basePath: "/file"
 schemes:
   - "http"
 paths:
